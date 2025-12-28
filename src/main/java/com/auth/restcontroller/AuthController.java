@@ -50,6 +50,11 @@ public class AuthController {
         user.setTenantId(tenantId);
         user.setPlan("FREE");
 
+        // ASSIGN DEFAULT ROLE
+        Role userRole = roleRepo.findByName("USER")
+                .orElseThrow(() -> new RuntimeException("Default role USER not found"));
+
+        user.setRoles(Set.of(userRole));
         User saved = userRepo.save(user);
         userEventPublisher.publishUserCreated(saved);
 
