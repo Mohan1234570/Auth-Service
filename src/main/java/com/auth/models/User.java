@@ -31,7 +31,7 @@ public class User {
 
 
     @Enumerated(EnumType.STRING)
-    private AccountStatus status; // ACTIVE, LOCKED, DELETED
+    private AccountStatus status;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
