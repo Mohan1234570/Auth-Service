@@ -77,7 +77,7 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponse(token));
     }
 
-    @PostMapping("/auth/refresh")
+    @PostMapping("/refresh")
     public AuthResponse refresh(@CookieValue("refresh_token") String token) {
 
         RefreshToken newToken = refreshTokenService.rotate(token);
